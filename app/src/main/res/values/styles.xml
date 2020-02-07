@@ -1,0 +1,43 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- user detail card view-->
+    <style name="textButton">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/roboto_medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="cardText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/roboto</item>
+    </style>
+
+    <style name="cardText.Title">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/roboto_medium</item>
+        <item name="android:text">@string/gitUserSampleName</item>
+        <item name="android:baseline">@dimen/titleBaseLine</item>
+        <item name="android:textSize">@dimen/cardTitleTextSize</item>
+    </style>
+
+    <style name="cardText.Score">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/roboto_regular</item>
+        <item name="android:baseline">@dimen/scoreBaseLine</item>
+        <item name="android:text">@string/gitUserSampleScore</item>
+        <item name="android:textSize">@dimen/scoreTextSize</item>
+    </style>
+
+    <!-- collapsed item -->
+
+
+
+
+</resources>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Search GitUser</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="gitUserRepoButton">REPO</string>
+    <string name="gitUserSampleAction">ACTION 2</string>
+    <string name="gitUserSampleScore">12345.678</string>
+    <string name="gitUserSampleName">Username</string>
+    <string name="gitUserSampleRepoLink">https://api.github.com/users/username/repos</string>
+
+    <string name="errorConnection">Cannot connect to Internet. Check your Connection</string>
+    <string name="onSearching">On searching</string>
+
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="cardPadding">16dp</dimen>
+    <dimen name="titleBaseLine">40dp</dimen>
+    <dimen name="scoreBaseLine">28dp</dimen>
+    <dimen name="basePadding">8dp</dimen>
+    <dimen name="cardTitleTextSize">24sp</dimen>
+    <dimen name="scoreTextSize">14sp</dimen>
+
+    <dimen name="gitUserDetailImageDimension">80dp</dimen>
+
+    <dimen name="gitUserItemHeight">56dp</dimen>
+    <dimen name="gitUserItemExpandButtonDimension">24dp</dimen>
+    <dimen name="gitUserItemExpandRowDimension">48dp</dimen>
+    <dimen name="gitUserExpandRowMargin">32dp</dimen>
+    <dimen name="gitUSerExpandRowImageViewDimension">24dp</dimen>
+
+</resources>

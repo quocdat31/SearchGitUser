@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:padding="0dp"
+    tools:targetApi="lollipop">
+
+    <androidx.cardview.widget.CardView
+        style="@style/CardView.Light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                style="?android:attr/borderlessButtonStyle"
+                android:focusable="true"
+                android:clickable="true"
+                android:id="@+id/itemCollapsedView"
+                android:paddingHorizontal="@dimen/cardPadding"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/gitUserItemHeight"
+                tools:targetApi="o">
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:id="@+id/gitUserNameTextView"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gitUserSampleName" />
+
+                <ImageView
+                    android:layout_marginLeft="@dimen/cardPadding"
+                    android:src="@drawable/ic_expand_more_black_24dp"
+                    style="@android:style/Widget.Material.Button.Borderless"
+                    android:layout_gravity="center"
+                    android:id="@+id/expandButton"
+                    android:layout_width="@dimen/gitUserItemHeight"
+                    android:layout_height="@dimen/gitUserItemHeight"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:tint="@color/colorTextHint" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/expandableView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/cardPadding"
+                    tools:targetApi="o">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/gitUserItemExpandRowDimension">
+
+                        <ImageView
+                            android:tint="@color/colorWhite"
+                            android:background="@drawable/gituser_avatar_background"
+                            android:backgroundTint="@color/colorAccent"
+                            android:src="@drawable/ic_star_black_24dp"
+                            android:layout_marginRight="@dimen/gitUserExpandRowMargin"
+                            android:layout_gravity="center"
+                            android:layout_width="@dimen/gitUSerExpandRowImageViewDimension"
+                            android:layout_height="@dimen/gitUSerExpandRowImageViewDimension"
+                            android:layout_marginEnd="@dimen/gitUserExpandRowMargin" />
+
+                        <TextView
+                            android:layout_height="wrap_content"
+                            android:id="@+id/gitUserScoreTextView"
+                            style="@style/TextAppearance.MaterialComponents.Body2"
+                            android:layout_gravity="center"
+                            android:layout_width="match_parent"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/gitUserItemExpandRowDimension">
+
+                        <ImageView
+                            android:backgroundTint="@color/colorTextPrimaryDark"
+                            android:background="@drawable/gituser_avatar_background"
+                            android:tint="@color/colorWhite"
+                            android:src="@drawable/ic_link_black_24dp"
+                            android:layout_marginRight="@dimen/gitUserExpandRowMargin"
+                            android:layout_gravity="center"
+                            android:layout_width="@dimen/gitUSerExpandRowImageViewDimension"
+                            android:layout_height="@dimen/gitUSerExpandRowImageViewDimension"
+                            android:layout_marginEnd="@dimen/gitUserExpandRowMargin" />
+
+                        <TextView
+                            android:id="@+id/gitUserRepoTextView"
+                            style="@style/TextAppearance.MaterialComponents.Body2"
+                            android:layout_gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
