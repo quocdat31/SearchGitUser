@@ -1,34 +1,32 @@
 package com.example.myapplication
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.app.ProgressDialog
-import android.content.DialogInterface
 import android.os.Build
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
-import android.view.KeyEvent
-import android.view.MotionEvent
-import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
-import android.widget.TextView.OnEditorActionListener
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.api.FetchDataFromUrl
-import com.example.myapplication.api.GitService
+import com.example.myapplication.api.NetworkManager
 import com.example.myapplication.api.OnFetchDataListener
 import com.example.myapplication.model.GitUser
+import com.example.myapplication.model.Response
+import com.example.myapplication.ultis.DialogCreator
+import com.example.myapplication.ultis.clearAndFocusEditText
+import com.example.myapplication.ultis.isNetworkAvailable
+import com.example.myapplication.ultis.log
+import com.example.myapplication.userdetail.UserDetailDialog
+import com.example.myapplication.userdetail.UserDetailPresenter
+import io.reactivex.Observable
+import io.reactivex.Observer
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.searchEditText
-import kotlinx.android.synthetic.main.activity_main.view.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity(), OnFetchDataListener, OnRecyclerViewItemClickListener {
@@ -44,12 +42,9 @@ class MainActivity : AppCompatActivity(), OnFetchDataListener, OnRecyclerViewIte
         setContentView(R.layout.activity_main)
 
 
-
-        getUser()
-
         setSupportActionBar(toolBar)
 
-        searchEditText.editText?.setOnEditorActionListener { v, actionId, event ->
+        searchEditText.editText?.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 if (isNetworkAvailable(this)) {
                     fetchGitUserData()
@@ -70,14 +65,16 @@ class MainActivity : AppCompatActivity(), OnFetchDataListener, OnRecyclerViewIte
 
     override fun onFetchDataSuccess(arrayList: ArrayList<GitUser>) {
         val adapter = GitUserAdapter(arrayList, this, this)
-        if (adapter.itemCount == 0 && isNetworkAvailable(this)) {
+        if (adapter.itemCount == 0 && isNetworkAvailable(
+                this
+            )
+        ) {
             DialogCreator(
                 this,
                 "User ${searchEditText.editText?.text} not found, try different one",
                 "Try different"
             ) {
                 clearAndFocusEditText(searchEditText)
-
             }
                 .build()
         }
@@ -94,30 +91,42 @@ class MainActivity : AppCompatActivity(), OnFetchDataListener, OnRecyclerViewIte
     }
 
     override fun onItemClick(gitUser: GitUser) {
-        DetailDialog(gitUser).show(supportFragmentManager, null)
+        val detailDialog = UserDetailDialog(gitUser)
+        UserDetailPresenter(this, detailDialog)
+
+        detailDialog.show(supportFragmentManager, null)
     }
 
+    @SuppressLint("CheckResult")
     private fun fetchGitUserData() {
+
+        NetworkManager.create()
+            .getUser("asd", 10)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { object : Observer<List<GitUser>>{
+                override fun onComplete() {
+
+                }
+
+                override fun onSubscribe(d: Disposable) {
+
+                }
+
+                override fun onNext(t: List<GitUser>) {
+                    log(msg = t.size.toString())
+                }
+
+
+                override fun onError(e: Throwable) {
+
+                }
+
+            } }
+
         progressDialog = ProgressDialog(this)
-        progressDialog.setMessage("On searching")
+        progressDialog.setMessage("searching")
         progressDialog.show()
         FetchDataFromUrl(this).execute("${App.API}search/users?per_page=$mPageLimiter&q=${searchEditText.editText?.text}")
-    }
-
-    fun getUser() {
-
-        val service = GitService.create()
-
-        service?.getGitUser(10,"asd")?.enqueue(object : Callback<List<GitUser>>{
-
-            override fun onFailure(call: Call<List<GitUser>>, t: Throwable) {
-                Log.d("asd","fail")
-            }
-
-            override fun onResponse(call: Call<List<GitUser>>, response: Response<List<GitUser>>) {
-                Log.d("asd","$response")
-            }
-
-        })
     }
 }

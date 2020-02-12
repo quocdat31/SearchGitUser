@@ -1,85 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/gituser_detail_layout_background"
-    android:orientation="vertical"
     android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_height="wrap_content">
+    android:background="@drawable/gituser_detail_layout_background"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:padding="@dimen/cardPadding"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/cardPadding">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_weight="1"
-                android:orientation="vertical"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <TextView
-                    android:maxLines="1"
                     android:id="@+id/gitUserNameTextView"
                     style="@style/cardText.Title"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:maxLines="1" />
 
                 <TextView
-                    android:maxLines="2"
-                    android:layout_marginTop="@dimen/cardPadding"
-                    android:layout_marginRight="@dimen/cardPadding"
                     android:id="@+id/gitUserRepoTextView"
-                    android:text="@string/gitUserSampleRepoLink"
                     style="@style/cardText.Score"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/cardPadding"
+                    android:layout_marginRight="@dimen/cardPadding"
+                    android:maxLines="2"
+                    android:text="@string/gitUserSampleRepoLink" />
 
                 <LinearLayout
-                    android:layout_marginTop="@dimen/cardPadding"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/cardPadding">
 
                     <TextView
-                        android:textColor="@color/colorAccent"
                         android:id="@+id/openRepoButton"
-                        android:layout_marginRight="@dimen/basePadding"
                         style="@style/textButton"
-                        android:text="@string/gitUserRepoButton"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/basePadding"
+                        android:text="@string/gitUserRepoButton"
+                        android:textColor="@color/colorAccent" />
 
                     <TextView
-                        android:textColor="@color/colorAccent"
                         style="@style/textButton"
-                        android:text="@string/gitUserSampleAction"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:text="@string/gitUserSampleAction"
+                        android:textColor="@color/colorAccent" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
             <ImageView
-                android:elevation="1dp"
-                android:visibility="gone"
-                android:src="@color/colorTextHint"
                 android:id="@+id/gitUserAvatarImageView"
                 android:layout_width="@dimen/gitUserDetailImageDimension"
                 android:layout_height="@dimen/gitUserDetailImageDimension"
                 android:layout_gravity="end"
+                android:elevation="1dp"
+                android:src="@color/colorTextHint"
+                android:visibility="gone"
                 tools:targetApi="lollipop" />
 
             <ProgressBar
-                android:padding="@dimen/cardPadding"
                 android:id="@+id/loadingGitUserImageProgressBar"
                 android:layout_width="@dimen/gitUserDetailImageDimension"
-                android:layout_height="@dimen/gitUserDetailImageDimension"/>
+                android:layout_height="@dimen/gitUserDetailImageDimension"
+                android:padding="@dimen/cardPadding" />
 
         </LinearLayout>
 

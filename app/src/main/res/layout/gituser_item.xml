@@ -15,11 +15,13 @@
         android:animateLayoutChanges="true">
 
         <LinearLayout
+            android:animateLayoutChanges="true"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <LinearLayout
+                android:animateLayoutChanges="true"
                 style="?android:attr/borderlessButtonStyle"
                 android:focusable="true"
                 android:clickable="true"

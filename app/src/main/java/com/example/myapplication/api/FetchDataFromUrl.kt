@@ -43,5 +43,4 @@ class FetchDataFromUrl(var onFetchDataListener: OnFetchDataListener) :
         return urlConnection.inputStream.bufferedReader().use { it.readText() }
     }
 
-
 }

@@ -19,7 +19,7 @@ class GitUserAdapter(
     private val items: ArrayList<GitUser>,
     private val context: Context,
     private val onRecyclerViewItemClickListener: OnRecyclerViewItemClickListener
-    ) :
+) :
     RecyclerView.Adapter<GitUserAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -33,8 +33,11 @@ class GitUserAdapter(
         val itemExpandedView = itemView.expandableView
         val itemLayout = itemView.itemLayout
 
-        fun bind(gitUser: GitUser, onRecyclerViewItemClickListener: OnRecyclerViewItemClickListener) {
-            itemCollapsedView.setOnClickListener{
+        fun bind(
+            gitUser: GitUser,
+            onRecyclerViewItemClickListener: OnRecyclerViewItemClickListener
+        ) {
+            itemCollapsedView.setOnClickListener {
                 onRecyclerViewItemClickListener.onItemClick(gitUser)
             }
         }

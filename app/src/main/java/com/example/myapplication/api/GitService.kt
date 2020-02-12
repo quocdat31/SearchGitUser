@@ -18,20 +18,23 @@ import java.lang.StringBuilder
 
 interface GitService {
 
-    @GET("search/users")
+    @GET("search/users?")
     @Headers("Content-Type: application/json")
 
-    fun getGitUser(@Query("per_page")page: Int,
-                   @Query("q")user: String
-                   ): Call<List<GitUser>>
+    fun fetchGitUSer(
+        @Query("per_page") perPage: Int,
+        @Query("q") name: String
+    ): Call<List<GitUser>>
 
     companion object {
 
         fun create(): GitService? {
-            var client = OkHttpClient.Builder().build()
 
-            var retrofit = Retrofit.Builder()
+            val client = OkHttpClient.Builder().build()
+
+            val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)
                 .baseUrl(App.API)
                 .build()
@@ -39,7 +42,5 @@ interface GitService {
             return retrofit.create(GitService::class.java)
         }
     }
-
-
 }
 
